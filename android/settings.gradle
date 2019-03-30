@@ -1,0 +1,3 @@
+rootProject.name = 'VivaciteApp'
+
+include ':app'
