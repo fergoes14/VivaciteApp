@@ -13,6 +13,9 @@ import {
 } from 'react-native';
 
 
+import { StackNavigator} from 'react-navigation';
+
+//import Contato from './Contato';
 
 
 
@@ -20,11 +23,24 @@ import {
 
 
 
-
-export default class BtnInicio extends Component {
+class BtnInicio extends Component {
 
     
 
+    constructor(props){
+        super(props);
+        this.state={
+
+        }
+    
+    this.irContato=this.irContato.bind(this);
+    }
+
+    irContato(){
+        this.props.navigation.navigate('ContatoTela')
+    }
+
+    
     render() {
         return (
             <View style={styles.container}>
@@ -40,7 +56,7 @@ export default class BtnInicio extends Component {
                 </TouchableHighlight >
 
                 <View style={styles.contatoArea}>
-                    <TouchableOpacity style={styles.contatoBtn}>
+                    <TouchableOpacity style={styles.contatoBtn} onPress={this.irContato}>
                         <Text style={styles.contatoTexto}>Contato</Text>
                     </TouchableOpacity>
 
@@ -116,5 +132,7 @@ const styles = StyleSheet.create({
 
 
 });
+
+
 
 
