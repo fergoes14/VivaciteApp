@@ -16,6 +16,7 @@ import { StackNavigator } from 'react-navigation';
 
 import BtnInicio from './src/BtnInicio';
 import Contato from './src/Contato';
+import SobreNos from './src/SobreNos';
 
 
 console.disableYellowBox = true;
@@ -24,8 +25,12 @@ class TelaPrincipal extends Component {
 
   static navigationOptions = {
     title: 'Home',
-    header: null
-  }
+    headerTitle: (
+      <Image style={{width:'100%', height:'100%'}} source={require('./src/img/vivacitelogo.png')}/>
+  ),
+  
+  };
+  
 
   constructor(props) {
     super(props);
@@ -34,19 +39,22 @@ class TelaPrincipal extends Component {
     }
 
     this.irContato = this.irContato.bind(this);
+    this.irSobre = this.irSobre.bind(this);
   }
 
   irContato() {
     this.props.navigation.navigate('ContatoTela')
   }
 
+  irSobre(){
+    this.props.navigation.navigate('SobreTela')
+  }
+
 
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Image style={styles.imgHeader} source={require('./src/img/vivacitelogo.png')} />
-        </View>
+       
 
         <ImageBackground style={styles.backImg} source={require('./src/img/torre.png')}>
         
@@ -64,7 +72,7 @@ class TelaPrincipal extends Component {
             <Text style={styles.contatoTexto}>Contato</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.contatoBtn}>
+          <TouchableOpacity style={styles.contatoBtn} onPress={this.irSobre}>
             <Text style={styles.contatoTexto}>Sobre nós</Text>
           </TouchableOpacity>
 
@@ -152,7 +160,8 @@ const styles = StyleSheet.create({
 
 const Navegador = StackNavigator({
   Home: { screen: TelaPrincipal },
-  ContatoTela: { screen: Contato }
+  ContatoTela: { screen: Contato },
+  SobreTela:{screen: SobreNos },
 });
 
 export default Navegador
